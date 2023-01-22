@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+ <html>
+     <head>
+       
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+         <script>
+            function submit(){
+                var raw_question = document.getElementById('que_bar').value;
+                if(raw_question==""){
+                    question="";
+                }
+                else{
+                question = "Que-"+raw_question;
+                }
+                var answer =document.getElementById('ans_bar').value;
+                answer = answer;
+                 var pdf = new jsPDF({
+                     orientation: 'p',
+                     unit: 'mm',
+                     format: 'a5',
+                     putOnlyUsedFonts:true
+                     });debugger;
+                 pdf.text(question, 5, 20);
+                 pdf.text(answer, 5, 30);
+                 pdf.save(raw_question+'.pdf');
+             }
+         </script>
+         <style>
+            textarea{
+                resize: none;
+                width: 100%;
+                height: 5rem;
+            }
+            p{
+                font-size: 5px;
+            }
+            #ans_bar{
+                height: 30rem;
+                scroll-behavior: smooth;
+                
+            }
+            #btn{
+                height: 5rem;
+                width: auto;
+            }
+           
+         </style>
+     </head>
+     <body>
+        <div id="a_panel">
+            <textarea id="que_bar" placeholder="Type your question here!!!"></textarea><br>
+            <textarea id="ans_bar" placeholder="Type your answer here!!!"></textarea>
+        </div>
+        <div id="q_panel"><center><button id="btn" onclick="submit()">Download pdf</button>
+        </center>
+        </div>
+        </body>
+ </html>        
